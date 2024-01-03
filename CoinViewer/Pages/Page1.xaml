@@ -8,7 +8,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
 
-    <Grid Background="White">
-        
+    <Grid Background="White" Loaded="Page_Load">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="66,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="144" Height="174"/>
+
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoinViewer.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,19 @@ namespace CoinViewer.Pages
         public Page1()
         {
             InitializeComponent();
+        }
+
+        private async void Page_Load(object sender, RoutedEventArgs e)
+        {
+            CoinAPI coinCapApi = new CoinAPI();
+
+            List<string> coinNames = await coinCapApi.GetAllCoinNames();
+
+            if (coinNames != null)
+            {
+
+                textBox.Text = string.Join(Environment.NewLine, coinNames);
+            }
         }
     }
 }

@@ -15,6 +15,46 @@ namespace CoinViewer.Helper
     {
         private const string ApiBaseUrl = "https://api.coincap.io/v2/";
 
+        public async Task<List<string>> GetAllCoinNames()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                string apiUrl = $"{ApiBaseUrl}assets";
+
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseData = await response.Content.ReadAsStringAsync();
+
+
+                        JObject jsonObject = JsonConvert.DeserializeObject<JObject>(responseData);
+                        JArray coinsArray = jsonObject["data"] as JArray;
+
+                        if (coinsArray != null)
+                        {
+                            List<string> coinNames = coinsArray.Select(coin => coin["name"].ToString()).ToList();
+                            return coinNames;
+                        }
+                    }
+                    else
+                    {
+
+                        Console.WriteLine($"Error: {response.StatusCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Exception: {ex.Message}");
+                }
+
+                return null;
+            }
+        }
+
         public async Task<List<Currency>> GetAllCurrencies()
         {
             using (HttpClient httpClient = new HttpClient())
