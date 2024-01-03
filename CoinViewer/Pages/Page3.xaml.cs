@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoinViewer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,23 @@ namespace CoinViewer.Pages
     /// </summary>
     public partial class Page3 : Page
     {
-        public Page3()
+        private Currency selectedCurrency;
+        public Page3(Currency currency)
         {
             InitializeComponent();
+            selectedCurrency = currency;
+
+            // Ваша логіка для відображення деталей про валюту
+            TextBlock currencyDetailsTextBlock = new TextBlock();
+            currencyDetailsTextBlock.Text = $"Name: {selectedCurrency.Name}\nCode: {selectedCurrency.Symbol}\n" +
+                                            $"Rank: {selectedCurrency.Rank} + " +
+                                            $"\nSupply: {selectedCurrency.Supply}\n" +
+                                            $"\nMarket Cap: {selectedCurrency.MarketCapUsd}\n" +
+                                            $"Volume (24H): {selectedCurrency.VolumeUsd24Hr}\nPrice (USD): {selectedCurrency.Price}\n" +
+                                            $"Change (24H): {selectedCurrency.ChangePercent24Hr}%\nVWAP (24H): {selectedCurrency.Vwap24Hr}";
+
+            Content = currencyDetailsTextBlock;
+
         }
     }
 }

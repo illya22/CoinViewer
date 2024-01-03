@@ -1,4 +1,6 @@
-﻿using CoinViewer.Pages;
+﻿using CoinViewer.Helper;
+using CoinViewer.Models;
+using CoinViewer.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +32,11 @@ namespace CoinViewer
             MyFrame.Content = new Page1();
         }
 
-        private void Page2_Click(object sender, RoutedEventArgs e)
+        private async void Page2_Click(object sender, RoutedEventArgs e)
         {
-
-            MyFrame.Content = new Page2();
+            CoinAPI coinAPI = new CoinAPI();
+            List<Currency> allCurrencies = await coinAPI.GetAllCurrencies();
+            MyFrame.Content = new Page2(allCurrencies);
         }
     }
 }

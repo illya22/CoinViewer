@@ -7,16 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="621*"/>
+            <ColumnDefinition Width="179*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2">
             <Button x:Name="Page1" Content="All coins" Height="35" Width="100" Click="Page1_Click"/>
             <Button x:Name="Page2" Content="Search" Height="35" Width="100" Click="Page2_Click"/>
-             
+
         </StackPanel>
-        <Frame x:Name="MyFrame" Grid.Row="1" Background="White"></Frame>
+        <Frame x:Name="MyFrame" Grid.Row="1" Background="White" Grid.ColumnSpan="2"></Frame>
 
     </Grid>
 </Window>
