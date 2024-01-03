@@ -1,5 +1,4 @@
-﻿using CoinViewer.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CoinViewer
+namespace CoinViewer.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page3 : Page
     {
-        public MainWindow()
+        public Page3()
         {
             InitializeComponent();
-        }
-        private void Page1_Click(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Content = new Page1();
-        }
-
-        private void Page2_Click(object sender, RoutedEventArgs e)
-        {
-
-            MyFrame.Content = new Page2();
         }
     }
 }
